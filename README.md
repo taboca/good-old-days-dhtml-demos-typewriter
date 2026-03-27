@@ -2,6 +2,10 @@
 
 This project runs a restored local version of the old Taboca typewriter/computer demo.
 
+## Demo
+
+![Demo](public/demo-typewriter/blast/demo.gif)
+
 ## Before and After
 
 Before: this forensic work involved identifying the demonstration from the web archive in the first place. I'm thankful that the demonstration was partly working, even though it was missing one of the characters and some layout was broken. 
