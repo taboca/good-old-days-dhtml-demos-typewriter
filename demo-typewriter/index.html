@@ -14,18 +14,6 @@
 		padding: 0 1rem 2rem;
 		background: #000000;
 		overflow: auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#demo-shell {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		margin-top: 0;
-		margin-bottom: 0.35rem;
-		box-sizing: border-box;
 	}
 
 	#stage {
@@ -33,29 +21,18 @@
 		width: 563px;
 		height: 495px;
 		max-width: 100%;
-		perspective: 900px;
+		margin: 0 auto 0.35rem;
 		overflow: hidden;
 		box-sizing: border-box;
+		transition: width 0.4s ease, height 0.4s ease;
 	}
 
-	#scene-shell {
+	#paper,
+	#blackpane,
+	#all {
 		position: absolute;
-		left: -100px;
-		top: 0;
-		width: 663px;
-		height: 525px;
 		transform-origin: top left;
-	}
-
-	#scene {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 663px;
-		height: 525px;
-		transform: scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-		transform-style: preserve-3d;
-		transition: transform 0.4s ease;
+		transition: left 0.4s ease, top 0.4s ease, transform 0.4s ease;
 	}
 
 	#papercanvas img {
@@ -92,12 +69,37 @@
 </style>
 <script>
 
+	var demoscale=1;
+	var stagebasewidth=563;
+	var stagebaseheight=495;
+
+	function updatescaledchild(id,left,top) {
+		var mychild=document.getElementById(id);
+		if(!mychild) return;
+		mychild.style.left=(left*demoscale)+"px";
+		mychild.style.top=(top*demoscale)+"px";
+		mychild.style.transform="scale("+demoscale+")";
+	}
+
+	function updatestagecontentlayout() {
+		updatescaledchild("paper",50,200);
+		updatescaledchild("blackpane",0,200);
+		updatescaledchild("all",0,200);
+	}
+
+	function setstagebasewidth(nextwidth) {
+		if(stagebasewidth==nextwidth) return;
+		stagebasewidth=nextwidth;
+		updatedemoscale();
+	}
+
         // **************************************************************
         // animation to start the computer
         // callback when the user clicks in the green board (chip).
         //
         function authentication() {
                 if(okayto==0) okayto=1;
+                setstagebasewidth(470);
                 setTimeout("moveboard()",30);
         }
 
@@ -125,12 +127,7 @@
                 }
         }
         function celebrateinsert() {
-                myscene=document.getElementById('scene');
-                myscene.style.transform="scale(1.2) rotateX(6deg) rotateY(-8deg) rotateZ(4deg)";
-                setTimeout("resetinsertcelebration()",400);
-        }
-        function resetinsertcelebration() {
-                document.getElementById('scene').style.transform="scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
+                setstagebasewidth(470);
         }
  	// **************************************************************
         // turn on the computer
@@ -309,17 +306,13 @@
 
 		function updatedemoscale() {
 			mystage=document.getElementById("stage");
-			myshell=document.getElementById("scene-shell");
-			if(!mystage||!myshell) return;
-			basewidth=563;
-			baseheight=495;
+			if(!mystage) return;
 			availablewidth=window.innerWidth-32;
 			if(availablewidth<220) availablewidth=220;
-			demoscale=Math.min(1,availablewidth/basewidth);
-			mystage.style.width=(basewidth*demoscale)+"px";
-			mystage.style.height=(baseheight*demoscale)+"px";
-			myshell.style.left=(-100*demoscale)+"px";
-			myshell.style.transform="scale("+demoscale+")";
+			demoscale=Math.min(1,availablewidth/stagebasewidth);
+			mystage.style.width=(stagebasewidth*demoscale)+"px";
+			mystage.style.height=(stagebaseheight*demoscale)+"px";
+			updatestagecontentlayout();
 		}
 
 	window.addEventListener("load",updatedemoscale);
@@ -330,11 +323,8 @@
 </head>
 
 <body bgcolor="#000000" link="#909090">
-<div id="demo-shell">
 <div id="stage">
-<div id="scene-shell">
-<div id="scene">
-<div id="paper" style="position:absolute;left:150px;top:200px;">
+<div id="paper" style="left:50px;top:200px;">
 	<div id="bg" style="position:absolute;left:0px;top:0px;">
 	<img src="edit/bhpaper.jpg">
 	</div>
@@ -342,9 +332,9 @@
 		</div>
 </div>
 
-<div id="blackpane" style="position:absolute;left:100px;top:200px;width:450px;height:400px;background-color:rgb(0,0,0)">
+<div id="blackpane" style="left:0px;top:200px;width:450px;height:400px;background-color:rgb(0,0,0)">
 </div>
-<div id="all" style="position:absolute;left:100px;top:200px">
+<div id="all" style="left:0px;top:200px">
 <div id="greenboard" style="position:absolute;left:447px;top:118px;">
 <img border="0" src="microboard.jpg">
 </div>
@@ -374,9 +364,6 @@
 <div id="greenboard2" style="position:absolute;left:446px;top:113px;">
 <a href="javascript:" onclick="authentication();return false;">
 <img border="0" src="transp.gif" width="130" height="90"></a>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
