@@ -23,7 +23,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		margin-top: max(1rem, calc(50vh - 240px));
+		margin-top: 0;
 		margin-bottom: 0.35rem;
 		box-sizing: border-box;
 	}
@@ -31,17 +31,26 @@
 	#stage {
 		position: relative;
 		width: 563px;
-		height: 400px;
+		height: 495px;
 		max-width: 100%;
 		perspective: 900px;
 		overflow: hidden;
 		box-sizing: border-box;
 	}
 
-	#scene {
+	#scene-shell {
 		position: absolute;
 		left: -100px;
-		top: -125px;
+		top: 0;
+		width: 663px;
+		height: 525px;
+		transform-origin: top left;
+	}
+
+	#scene {
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 663px;
 		height: 525px;
 		transform: scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
@@ -268,6 +277,23 @@
 		}
 	}
 
+	function updatedemoscale() {
+		mystage=document.getElementById("stage");
+		myshell=document.getElementById("scene-shell");
+		if(!mystage||!myshell) return;
+		basewidth=563;
+		baseheight=495;
+		availablewidth=window.innerWidth-32;
+		if(availablewidth<220) availablewidth=220;
+		demoscale=Math.min(1,availablewidth/basewidth);
+		mystage.style.width=(basewidth*demoscale)+"px";
+		mystage.style.height=(baseheight*demoscale)+"px";
+		myshell.style.transform="scale("+demoscale+")";
+	}
+
+	window.addEventListener("load",updatedemoscale);
+	window.addEventListener("resize",updatedemoscale);
+
 </script>
 
 </head>
@@ -275,6 +301,7 @@
 <body bgcolor="#000000" link="#909090">
 <div id="demo-shell">
 <div id="stage">
+<div id="scene-shell">
 <div id="scene">
 <div id="paper" style="position:absolute;left:150px;top:200px;">
 	<div id="bg" style="position:absolute;left:0px;top:0px;">
@@ -316,6 +343,7 @@
 <div id="greenboard2" style="position:absolute;left:446px;top:113px;">
 <a href="javascript:" onclick="authentication();return false;">
 <img border="0" src="transp.gif" width="130" height="90"></a>
+</div>
 </div>
 </div>
 </div>
