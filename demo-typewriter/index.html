@@ -63,6 +63,13 @@
 		vertical-align: top;
 	}
 
+	#papercanvas .spaceglyph {
+		display: inline-block;
+		width: 12px;
+		height: 13px;
+		vertical-align: top;
+	}
+
 	#light {
 		transition: opacity 0.25s ease;
 	}
@@ -204,8 +211,16 @@
 				appendnewline();
 				return;
 			}
-		mycanvas=document.getElementById("papercanvas");
-		myimg=document.createElement("img");
+			if(val==32) {
+				mycanvas=document.getElementById("papercanvas");
+				myspace=document.createElement("span");
+				myspace.className="spaceglyph";
+				mycanvas.appendChild(myspace);
+				ii++;
+				return;
+			}
+			mycanvas=document.getElementById("papercanvas");
+			myimg=document.createElement("img");
 		if(val==97||val==65) myimg.setAttribute("src","edit/a.jpg");
 		if(val==98||val==66) myimg.setAttribute("src","edit/b.jpg");
 		if(val==99||val==67) myimg.setAttribute("src","edit/c.jpg");
@@ -232,8 +247,7 @@
 		if(val==120||val==88) myimg.setAttribute("src","edit/x.jpg");
 		if(val==121||val==89) myimg.setAttribute("src","edit/y.jpg");
 		if(val==122||val==90) myimg.setAttribute("src","edit/z.jpg");
-		if(val==32) myimg.setAttribute("src","edit/_blank.jpg");
-		if(val==33) myimg.setAttribute("src","edit/excla.jpg");
+			if(val==33) myimg.setAttribute("src","edit/excla.jpg");
 		if(val==44) myimg.setAttribute("src","edit/_semi.jpg");
 		if(val==46) myimg.setAttribute("src","edit/_dot.jpg");
 		if(val==35) myimg.setAttribute("src","edit/number.jpg");
