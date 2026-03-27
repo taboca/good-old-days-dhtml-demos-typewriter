@@ -1,0 +1,254 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Typewriter</title>
+<style>
+	html, body {
+		margin: 0;
+		min-height: 100%;
+	}
+
+	body {
+		display: grid;
+		place-items: center;
+		min-height: 100vh;
+		background: #000000;
+		overflow: auto;
+	}
+
+	#stage {
+		position: relative;
+		width: 563px;
+		height: 400px;
+		max-width: 100%;
+	}
+
+	#scene {
+		position: absolute;
+		left: -100px;
+		top: -200px;
+		width: 663px;
+		height: 600px;
+	}
+
+	#papercanvas img {
+		display: inline-block;
+		vertical-align: top;
+	}
+</style>
+<script>
+
+        // **************************************************************
+        // animation to start the computer
+        // callback when the user clicks in the green board (chip).
+        //
+        function authentication() {
+                if(okayto==0) okayto=1;
+                setTimeout("moveboard()",30);
+        }
+
+        boardcount=0;
+        boardpositionleft=447;
+        function moveboard() {
+                boardcount++;
+                if(boardcount<11) {
+                        boardpositionleft-=boardcount;
+			
+                        document.getElementById('greenboard').style.left=boardpositionleft+"px";
+                        setTimeout("moveboard()",40);
+                } else {
+                        moveboard2();
+                }
+        }
+        function moveboard2() {
+                boardcount--;
+                if(boardcount>0) {
+                        boardpositionleft-=boardcount;
+                        document.getElementById('greenboard').style.left=boardpositionleft+"px";
+                        setTimeout("moveboard2()",40);
+                } else {
+                }
+        }
+ 	// **************************************************************
+        // turn on the computer
+        //
+        function turnon() {
+                if(okayto==1) {
+
+                        okayto=2;
+                }
+                anilight();
+		generate();
+        }
+
+        lightcount=0;
+        function anilight() {
+                light=document.getElementById('light');
+                light.style.visibility='visible';
+                lightcount+=.1;
+                if(lightcount<1) {
+                        light.style.opacity=lightcount;
+                        setTimeout("anilight()",10);
+                } else {
+                        light.style.opacity=1;
+                }
+        }
+
+        // **************************************************************
+        // generating
+        // in fact submit the form, the Taboca Handwriter Server will generate the page
+        // with the textarea text content.
+        //
+
+        okayto=0;
+        function generate() {
+                if(okayto==2) {
+			qq();
+                }
+        }
+
+    
+	ii=0;
+	topps=200;
+	// **************************************************************
+        // DOM level 1 - creating each character dynamically!
+        //
+	function genchar(e) {
+		if(ii==23) {
+			mycanvas=document.getElementById("papercanvas");
+			myimg=document.createElement("BR");
+			mycanvas.appendChild(myimg);
+			topps-=14;	
+			ii=0;
+			document.getElementById("paper").style.top=topps+"px";
+		}
+		if(e.keyCode==13) {
+			topps-=14;	
+			ii=0;
+			document.getElementById("paper").style.top=topps+"px";
+			mycanvas=document.getElementById("papercanvas");
+			myimg=document.createElement("BR");
+			mycanvas.appendChild(myimg);
+	
+		} else {
+			val=e.charCode;
+			mycanvas=document.getElementById("papercanvas");
+			myimg=document.createElement("img");
+			if(val==97||val==65) myimg.setAttribute("src","edit/a.jpg");
+			if(val==98||val==66) myimg.setAttribute("src","edit/b.jpg");
+			if(val==99||val==67) myimg.setAttribute("src","edit/c.jpg");
+			if(val==100||val==68) myimg.setAttribute("src","edit/d.jpg");
+			if(val==101||val==69) myimg.setAttribute("src","edit/e.jpg");
+			if(val==102||val==70) myimg.setAttribute("src","edit/f.jpg");
+			if(val==103||val==71) myimg.setAttribute("src","edit/g.jpg");
+			if(val==104||val==72) myimg.setAttribute("src","edit/h.jpg");
+			if(val==105||val==73) myimg.setAttribute("src","edit/i.jpg");
+			if(val==106||val==74) myimg.setAttribute("src","edit/j.jpg");
+			if(val==107||val==75) myimg.setAttribute("src","edit/k.jpg");
+			if(val==108||val==76) myimg.setAttribute("src","edit/l.jpg");
+			if(val==109||val==77) myimg.setAttribute("src","edit/m.jpg");
+			if(val==110||val==78) myimg.setAttribute("src","edit/n.jpg");
+			if(val==111||val==79) myimg.setAttribute("src","edit/o.jpg");
+			if(val==112||val==80) myimg.setAttribute("src","edit/p.jpg");
+			if(val==113||val==81) myimg.setAttribute("src","edit/q.jpg");
+			if(val==114||val==82) myimg.setAttribute("src","edit/r.jpg");
+			if(val==115||val==83) myimg.setAttribute("src","edit/s.jpg");
+			if(val==116||val==84) myimg.setAttribute("src","edit/t.jpg");
+			if(val==117||val==85) myimg.setAttribute("src","edit/u.jpg");
+			if(val==118||val==86) myimg.setAttribute("src","edit/v.jpg");
+			if(val==119||val==87) myimg.setAttribute("src","edit/w.jpg");
+			if(val==120||val==88) myimg.setAttribute("src","edit/x.jpg");
+			if(val==121||val==89) myimg.setAttribute("src","edit/y.jpg");
+			if(val==122||val==90) myimg.setAttribute("src","edit/z.jpg");
+			if(val==32) myimg.setAttribute("src","edit/_blank.jpg");
+			if(val==33) myimg.setAttribute("src","edit/excla.jpg");
+			if(val==44) myimg.setAttribute("src","edit/_semi.jpg");
+			if(val==46) myimg.setAttribute("src","edit/_dot.jpg");
+			if(val==35) myimg.setAttribute("src","edit/number.jpg");
+			if(val==48) myimg.setAttribute("src","edit/zero.jpg");
+			if(val==49) myimg.setAttribute("src","edit/_1.jpg");
+			if(val==50) myimg.setAttribute("src","edit/_2.jpg");
+			if(val==51) myimg.setAttribute("src","edit/_3.jpg");
+			if(val==52) myimg.setAttribute("src","edit/_4.jpg");
+			if(val==53) myimg.setAttribute("src","edit/_5.jpg");
+			if(val==54) myimg.setAttribute("src","edit/_6.jpg");
+			if(val==55) myimg.setAttribute("src","edit/_7.jpg");
+			if(val==56) myimg.setAttribute("src","edit/_8.jpg");
+			if(val==57) myimg.setAttribute("src","edit/_9.jpg");
+			
+			ii++;
+			mycanvas.appendChild(myimg);	
+		}
+
+	}
+
+	// **************************************************************
+  
+	qqcount=13;
+	function qq() {
+		qqcount--;
+		if(topps>130) {
+			topps-=qqcount;
+			document.getElementById("paper").style.top=topps+"px";
+			setTimeout("qq()",30);
+		}
+		else {
+			window.onkeypress=genchar;
+		}
+	}
+
+</script>
+
+</head>
+
+<body bgcolor="#000000" link="#909090">
+<div id="stage">
+<div id="scene">
+<div id="paper" style="position:absolute;left:150px;top:200px;">
+	<div id="bg" style="position:absolute;left:0px;top:0px;">
+	<img src="edit/bhpaper.jpg">
+	</div>
+		<div id="papercanvas" style="position:absolute;left:47px;top:35px;width:276px;line-height:13px;font-size:0;white-space:nowrap;">
+		</div>
+</div>
+
+<div id="blackpane" style="position:absolute;left:100px;top:200px;width:450px;height:400px;background-color:rgb(0,0,0)">
+</div>
+<div id="all" style="position:absolute;left:100px;top:200px">
+<div id="greenboard" style="position:absolute;left:447px;top:118px;">
+<img border="0" src="microboard.jpg">
+</div>
+
+<div id="calc" style="position:absolute;left:0px;top:0px;">
+<img src="calc.gif">
+</div>
+
+<div id="light" style="position:absolute;left:47px;top:188px;visibility:hidden;opacity:0;width:46px;height:32px;overflow:visible;z-index:20">
+<img border="0" src="light.jpg" width="46" height="32">
+</div>
+
+<div id="form" style="position:absolute;left:55px;top:25px">
+<form name="theform">
+<font face="arial" size="-1">
+<textarea name="content" style="background-color:#88AA88;width:290px;height:80px;">
+</textarea>
+</font>
+</form>
+</div>
+
+<div id="board3" style="position:absolute;left:390px;top:3px;">
+<a href="javascript:" onclick="turnon();return false;">
+<img border="0" src="transp.gif" width="30" height="50"></a>
+</div>
+
+<div id="greenboard2" style="position:absolute;left:446px;top:113px;">
+<a href="javascript:" onclick="authentication();return false;">
+<img border="0" src="transp.gif" width="130" height="90"></a>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
