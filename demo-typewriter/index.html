@@ -22,6 +22,7 @@
 		width: 563px;
 		height: 400px;
 		max-width: 100%;
+		perspective: 900px;
 	}
 
 	#scene {
@@ -30,6 +31,9 @@
 		top: -200px;
 		width: 663px;
 		height: 600px;
+		transform: scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+		transform-style: preserve-3d;
+		transition: transform 0.4s ease;
 	}
 
 	#papercanvas img {
@@ -68,18 +72,29 @@
                         document.getElementById('greenboard').style.left=boardpositionleft+"px";
                         setTimeout("moveboard2()",40);
                 } else {
+                        celebrateinsert();
                 }
+        }
+        function celebrateinsert() {
+                myscene=document.getElementById('scene');
+                myscene.style.transform="scale(1.2) rotateX(6deg) rotateY(-8deg) rotateZ(4deg)";
+                setTimeout("resetinsertcelebration()",400);
+        }
+        function resetinsertcelebration() {
+                document.getElementById('scene').style.transform="scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
+                document.theform.content.focus();
         }
  	// **************************************************************
         // turn on the computer
         //
         function turnon() {
                 if(okayto==1) {
-
                         okayto=2;
+                        anilight();
+			generate();
+                } else if(okayto==0) {
+                        shakechip();
                 }
-                anilight();
-		generate();
         }
 
         lightcount=0;
@@ -93,6 +108,35 @@
                 } else {
                         light.style.opacity=1;
                 }
+        }
+
+        shakecount=0;
+        shaking=0;
+        function shakechip() {
+                if(shaking==0) shaking=1;
+                shakecount++;
+                mychip=document.getElementById('greenboard');
+                offset=(shakecount%2==0)?-2:2;
+                mychip.style.transform="translate("+offset+"px,"+offset+"px)";
+                if(shakecount<24) {
+                        setTimeout("shakechip()",50);
+                } else {
+                        mychip.style.transform="translate(0px,0px)";
+                        shakecount=0;
+                        shaking=0;
+                }
+        }
+
+        function guardtyping(e) {
+                if(okayto<2) {
+                        shakechip();
+                        if(e) {
+                                if(e.preventDefault) e.preventDefault();
+                                e.returnValue=false;
+                        }
+                        return false;
+                }
+                return true;
         }
 
         // **************************************************************
@@ -231,7 +275,7 @@
 <div id="form" style="position:absolute;left:55px;top:25px">
 <form name="theform">
 <font face="arial" size="-1">
-<textarea name="content" style="background-color:#88AA88;width:290px;height:80px;">
+<textarea name="content" onkeydown="return guardtyping(event);" style="background-color:#88AA88;width:290px;height:80px;padding:1rem;box-sizing:border-box;">
 </textarea>
 </font>
 </form>
