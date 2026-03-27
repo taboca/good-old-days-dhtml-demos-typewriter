@@ -40,6 +40,10 @@
 		display: inline-block;
 		vertical-align: top;
 	}
+
+	#light {
+		transition: opacity 0.25s ease;
+	}
 </style>
 <script>
 
@@ -90,24 +94,17 @@
         function turnon() {
                 if(okayto==1) {
                         okayto=2;
-                        anilight();
+                        poweronlight();
 			generate();
                 } else if(okayto==0) {
                         shakechip();
                 }
         }
 
-        lightcount=0;
-        function anilight() {
+        function poweronlight() {
                 light=document.getElementById('light');
                 light.style.visibility='visible';
-                lightcount+=.1;
-                if(lightcount<1) {
-                        light.style.opacity=lightcount;
-                        setTimeout("anilight()",10);
-                } else {
-                        light.style.opacity=1;
-                }
+                light.style.opacity=1;
         }
 
         shakecount=0;
