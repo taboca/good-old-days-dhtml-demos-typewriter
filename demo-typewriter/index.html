@@ -81,8 +81,12 @@
 		mychild.style.transform="scale("+demoscale+")";
 	}
 
+	function updatepaperlayout() {
+		updatescaledchild("paper",50,topps);
+	}
+
 	function updatestagecontentlayout() {
-		updatescaledchild("paper",50,200);
+		updatepaperlayout();
 		updatescaledchild("blackpane",0,200);
 		updatescaledchild("all",0,200);
 	}
@@ -197,7 +201,7 @@
 	function appendnewline() {
 		topps-=14;
 		ii=0;
-		document.getElementById("paper").style.top=topps+"px";
+		updatepaperlayout();
 		mycanvas=document.getElementById("papercanvas");
 		myimg=document.createElement("BR");
 		mycanvas.appendChild(myimg);
@@ -303,13 +307,13 @@
 	// **************************************************************
   
 	qqcount=13;
-		function qq() {
-			qqcount--;
-			if(topps>130) {
-				topps-=qqcount;
-				document.getElementById("paper").style.top=topps+"px";
-				setTimeout("qq()",30);
-			}
+			function qq() {
+				qqcount--;
+				if(topps>130) {
+					topps-=qqcount;
+					updatepaperlayout();
+					setTimeout("qq()",30);
+				}
 			else {
 				window.onkeypress=null;
 				lasttypedvalue=document.theform.content.value;
