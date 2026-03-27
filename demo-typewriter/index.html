@@ -10,11 +10,22 @@
 	}
 
 	body {
-		display: grid;
-		place-items: center;
-		min-height: 100vh;
+		margin: 0;
+		padding: 0 1rem 2rem;
 		background: #000000;
 		overflow: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#demo-shell {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-top: max(1rem, calc(50vh - 240px));
+		margin-bottom: 0.35rem;
+		box-sizing: border-box;
 	}
 
 	#stage {
@@ -23,14 +34,16 @@
 		height: 400px;
 		max-width: 100%;
 		perspective: 900px;
+		overflow: hidden;
+		box-sizing: border-box;
 	}
 
 	#scene {
 		position: absolute;
 		left: -100px;
-		top: -200px;
+		top: -125px;
 		width: 663px;
-		height: 600px;
+		height: 525px;
 		transform: scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 		transform-style: preserve-3d;
 		transition: transform 0.4s ease;
@@ -43,6 +56,22 @@
 
 	#light {
 		transition: opacity 0.25s ease;
+	}
+
+	#credits {
+		max-width: 42rem;
+		margin: 0 auto;
+		color: #d8d8d8;
+		font: 16px/1.7 Georgia, "Times New Roman", serif;
+		text-align: center;
+	}
+
+	#credits p {
+		margin: 0.35rem 0;
+	}
+
+	#credits a {
+		color: #f2f2f2;
 	}
 </style>
 <script>
@@ -244,6 +273,7 @@
 </head>
 
 <body bgcolor="#000000" link="#909090">
+<div id="demo-shell">
 <div id="stage">
 <div id="scene">
 <div id="paper" style="position:absolute;left:150px;top:200px;">
@@ -289,6 +319,16 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div id="credits">
+<p>Thanks for visiting the Typewriter Web Demonstration from 1999.</p>
+<p>Thanks to Codex 5.4 for supporting bringing this demo back to life.</p>
+<p>Thanks to Netscape for the Dynamic HTML era that made experiments like this possible.</p>
+<p><a href="https://web.archive.org/web/20001217101100/http://www.taboca.com/worlds/gek/board/r21/computer.html">Visit the original from the Web Archive</a></p>
+<p><a href="https://mgalli.com/">Visit Marcio S Galli (mgalli.com)</a></p>
+<p><a href="https://github.com/taboca/good-old-days-dhtml-demos-typewriter">Visit the project repo</a></p>
 </div>
 
 </body>
