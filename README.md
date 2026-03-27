@@ -4,17 +4,17 @@ This project runs a restored local version of the old Taboca typewriter/computer
 
 ## Demo
 
-![Demo](public/demo-typewriter/blast/demo.gif)
+![Demo](demo-typewriter/blast/demo.gif)
 
 ## Before and After
 
 Before: this forensic work involved identifying the demonstration from the web archive in the first place. I'm thankful that the demonstration was partly working, even though it was missing one of the characters and some layout was broken. 
 
-![Before](public/demo-typewriter/blast/before.png)
+![Before](demo-typewriter/blast/before.png)
 
 After: the demonstration was brought back to life. The missing character was currently replaced. The missing character was, by the way, the letter O, and it was replaced by the character 0. The characters properly show on the right hand side. And it is all good as it used to be in 1999. 
 
-![After](public/demo-typewriter/blast/after.png)
+![After](demo-typewriter/blast/after.png)
 
 ## Videos
 

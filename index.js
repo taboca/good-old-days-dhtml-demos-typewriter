@@ -8,12 +8,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const host = '127.0.0.1';
 const port = 1999;
-const publicRoot = path.resolve(__dirname, 'public');
+const demoRoot = path.resolve(__dirname, 'demo-typewriter');
 
-app.use(express.static(publicRoot, { extensions: ['html'], index: 'index.html' }));
+app.use('/demo-typewriter', express.static(demoRoot, { extensions: ['html'], index: 'index.html' }));
 
 app.get('/', (_request, response) => {
-  response.redirect('/demo-typewriter/');
+  response.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 app.listen(port, host, () => {
