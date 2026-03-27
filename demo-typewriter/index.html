@@ -124,7 +124,6 @@
         }
         function resetinsertcelebration() {
                 document.getElementById('scene').style.transform="scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
-                document.theform.content.focus();
         }
  	// **************************************************************
         // turn on the computer
@@ -265,31 +264,33 @@
 	// **************************************************************
   
 	qqcount=13;
-	function qq() {
-		qqcount--;
-		if(topps>130) {
-			topps-=qqcount;
-			document.getElementById("paper").style.top=topps+"px";
-			setTimeout("qq()",30);
+		function qq() {
+			qqcount--;
+			if(topps>130) {
+				topps-=qqcount;
+				document.getElementById("paper").style.top=topps+"px";
+				setTimeout("qq()",30);
+			}
+			else {
+				window.onkeypress=genchar;
+				document.theform.content.focus();
+			}
 		}
-		else {
-			window.onkeypress=genchar;
-		}
-	}
 
-	function updatedemoscale() {
-		mystage=document.getElementById("stage");
-		myshell=document.getElementById("scene-shell");
-		if(!mystage||!myshell) return;
-		basewidth=563;
-		baseheight=495;
-		availablewidth=window.innerWidth-32;
-		if(availablewidth<220) availablewidth=220;
-		demoscale=Math.min(1,availablewidth/basewidth);
-		mystage.style.width=(basewidth*demoscale)+"px";
-		mystage.style.height=(baseheight*demoscale)+"px";
-		myshell.style.transform="scale("+demoscale+")";
-	}
+		function updatedemoscale() {
+			mystage=document.getElementById("stage");
+			myshell=document.getElementById("scene-shell");
+			if(!mystage||!myshell) return;
+			basewidth=563;
+			baseheight=495;
+			availablewidth=window.innerWidth-32;
+			if(availablewidth<220) availablewidth=220;
+			demoscale=Math.min(1,availablewidth/basewidth);
+			mystage.style.width=(basewidth*demoscale)+"px";
+			mystage.style.height=(baseheight*demoscale)+"px";
+			myshell.style.left=(-100*demoscale)+"px";
+			myshell.style.transform="scale("+demoscale+")";
+		}
 
 	window.addEventListener("load",updatedemoscale);
 	window.addEventListener("resize",updatedemoscale);
