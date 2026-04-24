@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netscape 6 - What's New</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #ffffff;
+    }
+
+    body {
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: auto;
+    }
+
+    .welcome-stage {
+      position: relative;
+      width: 606px;
+      height: 464px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    a.mozblue {
+      color: darkblue;
+      text-decoration: none;
+    }
+
+    a.mozblue:visited {
+      color: rgb(0, 120, 215);
+    }
+
+    a.mozblue:active {
+      color: rgb(0, 255, 255);
+    }
+
+    a.mozblue:hover {
+      color: rgb(0, 120, 215);
+    }
+
+    .bg-six {
+      position: absolute;
+      left: 0;
+      top: -223px;
+      width: 606px;
+      height: 687px;
+      overflow: hidden;
+      color: rgb(220, 225, 250);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 619pt;
+      line-height: 0.78;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .whats-new {
+      position: absolute;
+      left: 165px;
+      top: 32px;
+      width: 380px;
+      height: 92px;
+      color: rgb(180, 210, 255);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 72px;
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .ocean {
+      position: absolute;
+      left: 124px;
+      top: 86px;
+      width: 462px;
+      height: 31px;
+      overflow: hidden;
+    }
+
+    .water {
+      position: absolute;
+      left: 0;
+      width: 462px;
+      height: 5px;
+    }
+
+    .water:nth-child(1) { top: 25px; background: rgb(230, 255, 255); }
+    .water:nth-child(2) { top: 20px; background: rgb(220, 245, 255); }
+    .water:nth-child(3) { top: 15px; background: rgb(210, 235, 255); }
+    .water:nth-child(4) { top: 10px; background: rgb(200, 225, 255); }
+    .water:nth-child(5) { top: 5px; background: rgb(190, 215, 255); }
+    .water:nth-child(6) { top: 0; background: rgb(180, 205, 255); }
+
+    .logo-placeholder {
+      position: absolute;
+      left: 124px;
+      top: 92px;
+      width: 30px;
+      height: 31px;
+      overflow: hidden;
+      background: #000000;
+      color: #7ff8ff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      line-height: 31px;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+      z-index: 3;
+    }
+
+    .reflection {
+      position: absolute;
+      left: 175px;
+      top: -21px;
+      width: 380px;
+      height: 160px;
+      overflow: hidden;
+      color: rgb(180, 210, 255);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 72px;
+      line-height: 1;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .reflection-slice {
+      position: absolute;
+      left: 0;
+      width: 380px;
+      height: 14px;
+      overflow: hidden;
+    }
+
+    .reflection-slice span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      white-space: nowrap;
+    }
+
+    .reflection-slice:nth-child(1) { top: 108px; left: 0; }
+    .reflection-slice:nth-child(1) span { top: -108px; }
+    .reflection-slice:nth-child(2) { top: 120px; left: 1px; }
+    .reflection-slice:nth-child(2) span { top: -99px; }
+    .reflection-slice:nth-child(3) { top: 132px; left: -1px; }
+    .reflection-slice:nth-child(3) span { top: -90px; }
+    .reflection-slice:nth-child(4) { top: 144px; left: 1px; }
+    .reflection-slice:nth-child(4) span { top: -81px; }
+
+    .netscape-word {
+      position: absolute;
+      left: 0;
+      top: 169px;
+      width: 330px;
+      height: 96px;
+      pointer-events: none;
+    }
+
+    .netscape-layer {
+      position: absolute;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 62px;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .netscape-layer.one {
+      left: 21px;
+      top: 0;
+      color: rgb(255, 255, 255);
+      opacity: 0.65;
+    }
+
+    .netscape-layer.two {
+      left: 25px;
+      top: -3px;
+      color: rgb(225, 225, 255);
+      opacity: 0.72;
+    }
+
+    .netscape-layer.three {
+      left: 30px;
+      top: -5px;
+      color: rgb(197, 197, 255);
+      opacity: 0.72;
+    }
+
+    .netscape-layer.four {
+      left: 35px;
+      top: -8px;
+      color: rgb(169, 169, 255);
+      opacity: 0.6;
+    }
+
+    .copy-block {
+      position: absolute;
+      color: darkblue;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      line-height: 1.05;
+      text-align: left;
+      z-index: 4;
+    }
+
+    .copy-block b {
+      font-weight: 700;
+    }
+
+    .copy-small {
+      position: relative;
+      margin-top: 2px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .pop00 {
+      left: 180px;
+      top: 2px;
+      width: 247px;
+      text-align: center;
+    }
+
+    .pop01 {
+      left: 30px;
+      top: 50px;
+      width: 90px;
+    }
+
+    .pop02 {
+      left: 201px;
+      top: 127px;
+      width: 204px;
+    }
+
+    .pop03 {
+      left: 272px;
+      top: 178px;
+      width: 204px;
+    }
+
+    .pop04 {
+      left: 310px;
+      top: 235px;
+      width: 204px;
+    }
+
+    .pop05 {
+      left: 349px;
+      top: 305px;
+      width: 204px;
+    }
+
+    .pop06 {
+      left: 148px;
+      top: 420px;
+      width: 310px;
+      height: 35px;
+      text-align: center;
+    }
+
+    .arrowbar-top,
+    .arrowbar-bottom,
+    .arrowbar-left {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .arrowbar-top {
+      left: 131px;
+      top: 25px;
+      width: 327px;
+      height: 38px;
+    }
+
+    .arrowbar-bottom {
+      left: 131px;
+      top: 394px;
+      width: 327px;
+      height: 38px;
+    }
+
+    .arrowbar-left {
+      left: 15px;
+      top: 50px;
+      width: 24px;
+      height: 351px;
+    }
+
+    .hbar,
+    .vbar {
+      position: absolute;
+      background: rgb(140, 170, 190);
+    }
+
+    .hbar {
+      left: 0;
+      top: 15px;
+      width: 327px;
+      height: 4px;
+    }
+
+    .vbar {
+      left: 3px;
+      top: 0;
+      width: 4px;
+      height: 351px;
+    }
+
+    .arrow-icon {
+      position: absolute;
+      width: 19px;
+      height: 21px;
+      display: block;
+    }
+
+    .arrow-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .arrow-up.left {
+      left: -2px;
+      top: -5px;
+    }
+
+    .arrow-up.right {
+      left: 309px;
+      top: -5px;
+    }
+
+    .arrow-down.left {
+      left: 0;
+      top: 20px;
+    }
+
+    .arrow-down.right {
+      left: 311px;
+      top: 20px;
+    }
+
+    .arrow-left.top {
+      left: -17px;
+      top: 0;
+    }
+
+    .arrow-left.middle {
+      left: -17px;
+      top: 155px;
+    }
+
+    .arrow-left.bottom {
+      left: -17px;
+      top: 331px;
+    }
+
+    .intro-button {
+      border: 2px outset #888888;
+      border-radius: 8px;
+      background: #dedede;
+      color: #000000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 18px;
+      min-width: 110px;
+      padding: 1px 13px 2px;
+      text-decoration: none;
+    }
+
+    .intro-button:hover {
+      color: rgb(0, 120, 215);
+      text-decoration: none;
+    }
+
+    .intro-button:active {
+      border: 2px inset #00ffff;
+    }
+
+    .button1,
+    .button2 {
+      position: absolute;
+      top: 368px;
+      z-index: 5;
+    }
+
+    .button1 {
+      left: 252px;
+    }
+
+    .button2 {
+      left: 373px;
+    }
+  </style>
+</head>
+<body>
+  <main class="welcome-stage" aria-label="Netscape 6 What's New static welcome page reconstruction">
+    <div class="bg-six">6</div>
+    <div class="whats-new">What's New</div>
+
+    <div class="reflection" aria-hidden="true">
+      <div class="reflection-slice"><span>What's New</span></div>
+      <div class="reflection-slice"><span>What's New</span></div>
+      <div class="reflection-slice"><span>What's New</span></div>
+      <div class="reflection-slice"><span>What's New</span></div>
+    </div>
+
+    <div class="ocean" aria-hidden="true">
+      <div class="water"></div>
+      <div class="water"></div>
+      <div class="water"></div>
+      <div class="water"></div>
+      <div class="water"></div>
+      <div class="water"></div>
+    </div>
+
+    <div class="logo-placeholder" aria-label="Netscape logo placeholder">N</div>
+
+    <div class="netscape-word" aria-hidden="true">
+      <div class="netscape-layer one">Netscape</div>
+      <div class="netscape-layer two">Netscape</div>
+      <div class="netscape-layer three">Netscape</div>
+      <div class="netscape-layer four">Netscape</div>
+    </div>
+
+    <div class="copy-block pop00">
+      <b><a href="#" class="mozblue">Search from Anywhere, Anytime</a></b><br>
+      <div class="copy-small">type a word here, then click Search</div>
+    </div>
+
+    <div class="arrowbar-top" aria-hidden="true">
+      <div class="hbar"></div>
+      <span class="arrow-icon arrow-up left">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="9.5,1 18,18 1,18" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+      <span class="arrow-icon arrow-up right">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="9.5,1 18,18 1,18" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="copy-block pop01">
+      <b><a href="#" class="mozblue">My Sidebar is yours</a></b><br><br>
+      <div class="copy-small">
+        Click "customize" to choose from hundreds of tabs<br><br>
+        Easy to open<br>
+        and close
+      </div>
+    </div>
+
+    <div class="arrowbar-left" aria-hidden="true">
+      <div class="vbar"></div>
+      <span class="arrow-icon arrow-left top">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="1,10.5 18,1 18,20" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+      <span class="arrow-icon arrow-left middle">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="1,10.5 18,1 18,20" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+      <span class="arrow-icon arrow-left bottom">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="1,10.5 18,1 18,20" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="copy-block pop02">
+      <b><a href="#" class="mozblue">Streamlined Interface</a></b><br>
+      <div class="copy-small">which you can customize with themes (coming soon)</div>
+    </div>
+
+    <div class="copy-block pop03">
+      <b><a href="#" class="mozblue">Small and Speedy</a></b><br>
+      <div class="copy-small">for faster download and browsing</div>
+    </div>
+
+    <div class="copy-block pop04">
+      <b><a href="#" class="mozblue">Same-time Messaging</a></b><br>
+      <div class="copy-small">
+        e-mail and instant messaging<br>
+        combined to keep you connected
+      </div>
+    </div>
+
+    <div class="copy-block pop05">
+      <b><a href="#" class="mozblue">The Best Standards Support</a></b><br>
+      <div class="copy-small">
+        for the most dynamic and robust<br>
+        web sites and applications
+      </div>
+    </div>
+
+    <button class="intro-button button1" type="button">Learn More</button>
+    <button class="intro-button button2" type="button">Start Using Now</button>
+
+    <div class="copy-block pop06">
+      <b><a href="#" class="mozblue">Convenient Services</a></b><br>
+      <div class="copy-small">always available and easy to find</div>
+    </div>
+
+    <div class="arrowbar-bottom" aria-hidden="true">
+      <div class="hbar"></div>
+      <span class="arrow-icon arrow-down left">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="1,3 18,3 9.5,20" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+      <span class="arrow-icon arrow-down right">
+        <svg viewBox="0 0 19 21" role="img" aria-label="">
+          <polygon points="1,3 18,3 9.5,20" fill="rgb(140,170,190)"/>
+        </svg>
+      </span>
+    </div>
+  </main>
+</body>
+</html>
