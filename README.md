@@ -1,6 +1,6 @@
-# Good Old Days DHTML Demo: Typewriter Demo from 1999
+# The Typewriter Animated Demonstration from 1999, rewritten with OpenAI Codex 
 
-This project runs a restored local version of the old Taboca typewriter/computer demo.
+This project shows a restored version of the old Taboca typewriter/computer demo (previously showcased by Netscape Communications around 1999), a Dynamic HTML demonstration written in 1999. In 2026 this demonstration was also featured in the [OpenAI showcase gallery](https://developers.openai.com/showcase/typewriterweb). 
 
 ## Demo
 
