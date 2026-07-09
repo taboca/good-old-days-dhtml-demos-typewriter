@@ -47,6 +47,20 @@ Then open:
 
 http://127.0.0.1:1999/demo-typewriter/
 
+## Related Demos
+
+This page is part of a small Good Old Days DHTML demo set.
+
+Current typewriter demo:
+
+- Repository: [taboca/good-old-days-dhtml-demos-typewriter](https://github.com/taboca/good-old-days-dhtml-demos-typewriter)
+- Live demo: https://taboca.github.io/good-old-days-dhtml-demos-typewriter/demo-typewriter/
+
+Netscape 6 welcome demo:
+
+- Repository: [taboca/good-old-days-dhtml-demos-welcome-netscape-6](https://github.com/taboca/good-old-days-dhtml-demos-welcome-netscape-6)
+- Live demo: https://taboca.github.io/good-old-days-dhtml-demos-welcome-netscape-6/netscape-6-welcome/
+
 ## License
 
 This restored repository is available under the MIT License, copyright 2026 Marcio Galli.
