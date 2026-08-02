@@ -1,5 +1,9 @@
 # The Typewriter Animated Demonstration from 1999, rewritten with OpenAI Codex 
 
+## Culture Coding with Agents
+
+This project is part of the *Culture Coding with Agents* series of episodes: [**Season: Coding with Agents, #evangelism #openai #codex**](https://www.mgalli.com/s/evangelistcast).
+
 This project shows a restored version of the old Taboca typewriter/computer demo (previously showcased by Netscape Communications around 1999), a Dynamic HTML demonstration written in 1999. In 2026 this demonstration was also featured in the [OpenAI showcase gallery](https://developers.openai.com/showcase/typewriterweb). 
 
 ## Demo
